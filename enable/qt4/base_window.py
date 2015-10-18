@@ -16,7 +16,7 @@
 
 
 # Qt imports.
-from pyface.qt import QtCore, QtGui, QtOpenGL
+from pyface.qt import QtCore, QtGui, QtWidgets, QtOpenGL
 
 # Enthought library imports.
 from enable.abstract_window import AbstractWindow
@@ -38,8 +38,8 @@ class _QtWindowHandler(object):
         qt_window.setAutoFillBackground(True)
         qt_window.setFocusPolicy(QtCore.Qt.WheelFocus)
         qt_window.setMouseTracking(True)
-        qt_window.setSizePolicy(QtGui.QSizePolicy.Expanding,
-                                QtGui.QSizePolicy.Expanding)
+        qt_window.setSizePolicy(QtWidgets.QSizePolicy.Expanding,
+                                QtWidgets.QSizePolicy.Expanding)
 
     def closeEvent(self, event):
         self._enable_window.cleanup()
@@ -182,7 +182,7 @@ class _QtWindowHandler(object):
             event.accept()
 
 
-class _QtWindow(QtGui.QWidget):
+class _QtWindow(QtWidgets.QWidget):
     """ The Qt widget that implements the enable control. """
 
     def __init__(self, parent, enable_window):
@@ -308,14 +308,14 @@ class _QtGLWindow(QtOpenGL.QGLWidget):
 
 class _Window(AbstractWindow):
 
-    control = Instance(QtGui.QWidget)
+    control = Instance(QtWidgets.QWidget)
 
     def __init__(self, parent, wid=-1, pos=None, size=None, **traits):
         AbstractWindow.__init__(self, **traits)
 
         self._mouse_captured = False
 
-        if isinstance(parent, QtGui.QLayout):
+        if isinstance(parent, QtWidgets.QLayout):
             parent = parent.parentWidget()
         self.control = self._create_control(parent, self)
 

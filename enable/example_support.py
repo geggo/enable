@@ -63,17 +63,17 @@ if ETSConfig.toolkit == 'wx':
         return frame
 
 elif ETSConfig.toolkit == 'qt4':
-    from pyface.qt import QtGui
+    from pyface.qt import QtWidgets
     from pyface.util.guisupport import start_event_loop_qt4, get_app_qt4
 
-    class DemoFrame(QtGui.QWidget):
+    class DemoFrame(QtWidgets.QWidget):
         def __init__ (self, parent, **kw):
-            QtGui.QWidget.__init__(self)
+            QtWidgets.QWidget.__init__(self)
 
             # Create the subclass's window
             self.enable_win = self._create_window()
 
-            layout = QtGui.QVBoxLayout()
+            layout = QtWidgets.QVBoxLayout()
             layout.setContentsMargins(0, 0, 0, 0)
             layout.addWidget(self.enable_win.control)
 

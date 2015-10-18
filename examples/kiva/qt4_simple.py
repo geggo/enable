@@ -6,7 +6,7 @@ from numpy import array
 import sys
 
 try:
-    from pyface.qt import QtGui
+    from pyface.qt import QtWidgets
 except ImportError:
     raise Exception('PyQt4 needs to be installed to run this example')
 
@@ -54,7 +54,7 @@ class MyCanvas(Canvas):
 
 
 if __name__ == "__main__":
-    app = QtGui.QApplication(sys.argv)
+    app = QtWidgets.QApplication(sys.argv)
 
     w = MyCanvas()
     w.control.resize(500, 500)

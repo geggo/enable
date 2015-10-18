@@ -5,7 +5,7 @@ the standard Qt one.
 
 from types import ListType, TupleType
 
-from pyface.qt import QtCore, QtGui
+from pyface.qt import QtCore, QtWidgets
 from traits.api import Any, Bool, Enum, Float, Int, Property, Trait, TraitError
 
 from enable.component import Component
@@ -43,7 +43,7 @@ def valid_scroll_position(object, name, value):
     raise TraitError
 
 
-class QResizableScrollBar(QtGui.QScrollBar):
+class QResizableScrollBar(QtWidgets.QScrollBar):
     resized = QtCore.Signal()
     def resizeEvent(self, event):
         super(QResizableScrollBar, self).resizeEvent(event)

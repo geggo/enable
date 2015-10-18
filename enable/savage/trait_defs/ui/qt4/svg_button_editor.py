@@ -26,7 +26,7 @@ import os.path
 from traits.api import Bool, Any, Str
 from traitsui.qt4.editor import Editor
 
-from pyface.qt import QtCore, QtGui
+from pyface.qt import QtCore, QtGui, QtWidgets
 
 # add the Qt's installed dir plugins to the library path so the iconengines
 # plugin will be found:
@@ -68,7 +68,7 @@ class SVGButtonEditor(Editor):
             self.toggle_tooltip = self.factory.tooltip
 
 
-        control = self.control = QtGui.QToolButton()
+        control = self.control = QtWidgets.QToolButton()
         control.setAutoRaise(True)
         control.setIcon(self.icon)
         control.setText(self.factory.label)
@@ -82,8 +82,7 @@ class SVGButtonEditor(Editor):
             control.setCheckable(True)
             control.toggled.connect(self._toggle_button)
 
-        QtCore.QObject.connect(control, QtCore.SIGNAL('clicked()'),
-                               self.update_object)
+        control.clicked.connect(self.update_object)
 
         if self.factory.tooltip:
             control.setToolTip(self.factory.tooltip)

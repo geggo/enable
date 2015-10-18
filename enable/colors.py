@@ -242,7 +242,7 @@ if ETSConfig.toolkit == 'wx':
                        convert_from_wx_color, editor=ColorEditorFactory)
 
 elif ETSConfig.toolkit == 'qt4':
-    from pyface.qt import QtGui
+    from pyface.qt import QtGui, QtWidgets
     from traitsui.qt4.color_editor \
                 import ToolkitEditorFactory as StandardColorEditorFactory
 
@@ -262,12 +262,12 @@ elif ETSConfig.toolkit == 'qt4':
         else:
             raise TraitError
 
-    convert_from_pyqt_color.info = ("a QtGui.Color instance, an SVG color "
+    convert_from_pyqt_color.info = ("a QtGui.QColor instance, an SVG color "
             "name, an integer which in hex is of the form 0xRRGGBB, where RR "
             "is red, GG is green, and BB is blue, a list/tuple of (r,g,b) or "
         "(r,g,b,a)")
 
-    window_color = QtGui.QApplication.palette().window().color()
+    window_color = QtWidgets.QApplication.palette().window().color()
     color_table["sys_window"] = (window_color.red()/255.0,
                                  window_color.green()/255.0,
                                  window_color.blue()/255.0,

@@ -1,5 +1,5 @@
 try:
-    from pyface.qt import QtGui
+    from pyface.qt import QtWidgets
 except ImportError:
     QT_NOT_AVAILABLE = True
 else:
@@ -13,9 +13,9 @@ from traits.testing.unittest_tools import unittest
 class TestQPainterDrawing(DrawingImageTester, unittest.TestCase):
 
     def setUp(self):
-        application = QtGui.QApplication.instance()
+        application = QtWidgets.QApplication.instance()
         if application is None:
-            self.application = QtGui.QApplication([])
+            self.application = QtWidgets.QApplication([])
         else:
             self.application = application
 
